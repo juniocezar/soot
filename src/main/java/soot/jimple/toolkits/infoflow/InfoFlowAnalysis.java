@@ -228,7 +228,7 @@ public class InfoFlowAnalysis {
 
     }
 
-    if (ret == null)
+    if (ret != null)
       return ret;
     else
       return new HashMutableDirectedGraph<EquivalentValue>();
