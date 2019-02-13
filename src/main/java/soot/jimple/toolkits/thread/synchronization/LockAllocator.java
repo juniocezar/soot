@@ -399,7 +399,7 @@ public class LockAllocator extends SceneTransformer {
       for (SootClass appClass : Scene.v().getApplicationClasses()) {
         // WorkAround for java.util.ConcurrentModificationException
         //for (SootMethod method : appClass.getMethods()) {
-        List<SootMethod> list = appClass.getMethod();
+        List<SootMethod> list = appClass.getMethods();
         int size = list.size();
         for (int i = 0; i < size; i++) {
           SootMethod method = list.get(i);

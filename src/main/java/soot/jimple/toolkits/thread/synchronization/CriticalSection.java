@@ -33,7 +33,7 @@ import soot.Unit;
 import soot.Value;
 import soot.jimple.toolkits.pointer.CodeBlockRWSet;
 
-class CriticalSection extends SynchronizedRegion {
+public class CriticalSection extends SynchronizedRegion {
   public static int nextIDNum = 1;
 
   // Information about the transactional region
