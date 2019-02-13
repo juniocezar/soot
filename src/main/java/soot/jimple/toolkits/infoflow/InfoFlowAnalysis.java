@@ -227,7 +227,12 @@ public class InfoFlowAnalysis {
       }
 
     }
-    return ret;
+
+    if (ret == null)
+      return ret;
+    else
+      return new HashMutableDirectedGraph<EquivalentValue>();
+
     // return getMethodInfoFlowSummary(methodRef.resolve(), context.getDeclaringClass().isApplicationClass());
   }
 
