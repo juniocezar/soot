@@ -397,7 +397,13 @@ public class LockAllocator extends SceneTransformer {
       }
 
       for (SootClass appClass : Scene.v().getApplicationClasses()) {
-        for (SootMethod method : appClass.getMethods()) {
+        // WorkAround for java.util.ConcurrentModificationException
+        //for (SootMethod method : appClass.getMethods()) {
+        List<SootMethod> list = appClass.getMethod();
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+          SootMethod method = list.get(i);
+          // end of workaround
           if (method.isConcrete()) {
             FlowSet fs = methodToFlowSet.get(method);
             if (fs != null) {
