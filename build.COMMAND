@@ -1,0 +1,1 @@
+time mvn clean compile package -DskipTests

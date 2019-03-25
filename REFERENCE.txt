@@ -1,0 +1,29 @@
+https://mailman.cs.mcgill.ca/pipermail/soot-list/2013-April/005677.html
+
+Hi Richard,
+
+I am looking for a constant propagation analysis.
+
+Yes, I am using Spark for points-to analysis.
+
+I downloaded the latest branch of Soot from git and I got the
+following error message:
+Exception in thread "main" java.lang.NullPointerException
+at soot.jimple.toolkits.infoflow.SmartMethodInfoFlowAnalysis.handleInvokeExpr(SmartMethodInfoFlowAnalysis.java:411)
+at soot.jimple.toolkits.infoflow.SmartMethodInfoFlowAnalysis.addFlowToCdfg(SmartMethodInfoFlowAnalysis.java:826)
+at soot.jimple.toolkits.infoflow.SmartMethodInfoFlowAnalysis.generateAbbreviatedInfoFlowGraph(SmartMethodInfoFlowAnalysis.java:154)
+at soot.jimple.toolkits.infoflow.SmartMethodInfoFlowAnalysis.<init>(SmartMethodInfoFlowAnalysis.java:131)
+at soot.jimple.toolkits.infoflow.ClassInfoFlowAnalysis.getMethodInfoFlowAnalysis(ClassInfoFlowAnalysis.java:57)
+.... (my own code) ...
+
+I'm not sure if the following change in
+InfoFlowAnalysis.getInvokeInfoFlowSummary() would be acceptable:
+
+Currently getInvokeInfoFlowSummary() can return null if the Stmt
+passed to the method has no edges out of it. I modified
+getInvokeInfoFlowSummary() to return a new HashMutableDirectedGraph if
+ret is still null at the return statement. Is that consistent with
+what getInvokeInfoFlowSummary() is trying to do?
+
+Thanks,
+Jiaqi
